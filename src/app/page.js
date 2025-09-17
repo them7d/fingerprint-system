@@ -7,47 +7,6 @@ export default function Home() {
   const ref = useRef(null);
   const [show, setShow] = useState(false);
   const [data, setData] = useState(null);
-  useEffect(() => {
-
-    setData({
-      "uploaded_filename": "fingerprint.png",
-      "pattern_type": "Arch",
-      "overall_quality": 0.6572437712101584,
-      "top_matches": [
-        {
-          "overall_similarity": 0.39727088273618616,
-          "pattern_match": true,
-          "features2_quality": 0.6238055705520418,
-          "matched_filename": "cleanfp\\easy\\fingerprint_1_P001_fingerprint_10_easy_aug_01.png"
-        },
-        {
-          "overall_similarity": 0.39426116003677325,
-          "pattern_match": true,
-          "features2_quality": 0.6120979094445027,
-          "matched_filename": "cleanfp\\easy\\fingerprint_1_P001_fingerprint_10_easy_aug_01_enhanced.png"
-        },
-        {
-          "overall_similarity": 0.3792158293384099,
-          "pattern_match": true,
-          "features2_quality": 0.6841985230573788,
-          "matched_filename": "cleanfp\\easy\\fingerprint_1_P001_fingerprint_10_easy_aug_00_enhanced.png"
-        },
-        {
-          "overall_similarity": 0.3778897743515359,
-          "pattern_match": true,
-          "features2_quality": 0.5847426048343654,
-          "matched_filename": "cleanfp\\easy\\fingerprint_1_P001_fingerprint_10_easy_aug_02_enhanced.png"
-        },
-        {
-          "overall_similarity": 0.3760330196813283,
-          "pattern_match": true,
-          "features2_quality": 0.7083939530273345,
-          "matched_filename": "cleanfp\\easy\\fingerprint_1_P001_fingerprint_10_easy_aug_00.png"
-        }
-      ]
-    });
-    setShow(true);
-  }, []);
   async function handleClick() {
     try {
       const response = await fetch(process.env.SENSOR_URL, {
