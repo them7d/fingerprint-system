@@ -39,7 +39,7 @@ export default function Index() {
       ref.current.className = "text-red-500 text-xs mx-3 opacity-100";
       ref.current.innerHTML = "please enter password with at least 12 characters including uppercase, lowercase, number and special character";
     } else {
-      await fetch(`${process.env.BACKEND_URL}/signup`, {
+      await fetch(`${process.env.BACKEND_SIGNUP_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
