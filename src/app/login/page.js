@@ -1,6 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
-import Three from '../components/tri_angles_shapes.jsx';
+import React, { useEffect, useRef } from "react"
 import Navbar from "../components/navbar"
 function Index() {
   const ref = useRef(null);
@@ -30,12 +29,11 @@ function Index() {
   async function handleClick() {
     const user = document.querySelector("#user").value;
     const pass = document.querySelector("#pass").value;
-    console.log(pass)
     if (!scurePassword(pass)) {
       ref.current.className = "text-red-500 text-xs mx-3 opacity-100";
       ref.current.innerHTML = "please enter password with at least 12 characters including uppercase, lowercase, number and special character";
     } else {
-      await fetch("https://bluefin.hedgehog-mamba.ts.net/user/login", {
+      await fetch(`${process.env.BACKEND_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,9 +55,9 @@ function Index() {
   }
   return (
     <>
-      <div className='font-sans flex flex-col items-center justify-items-center min-h-[100vh]'>
+      <div className="font-sans flex flex-col items-center justify-items-center min-h-[100vh]">
         <Navbar />
-        <main className="flex flex-col lg:min-w-lg lg:-mt-10 content-center justify-center max-w-[400px] sm:items-start p-8 pb-20 grow">
+        <main className="flex flex-col lg:min-w-lg max-w-md w-full content-center justify-center sm:items-start p-8 pb-20 grow">
           <div className="flex flex-col gap-8  bg-[var(--subBackground))] p-10 rounded-lg w-full">
             <h1 className="text-4xl font-bold text-center">
               Login
@@ -67,24 +65,14 @@ function Index() {
             <div className="flex items-center rounded bg-white/5 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-[var(--accent-secondary)]">
               <input id="user" type="text" name="username" placeholder="username" className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 rounded text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
             </div>
-            <div className='flex flex-col'>
+            <div className="flex flex-col">
               <div className="flex items-center rounded bg-white/5 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-[var(--accent-secondary)]">
                 <input id="pass" type="password" name="username" placeholder="password" className="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 rounded text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
               </div>
-              <div className='text-xs mx-3 pt-4' ref={ref}></div>
+              <div className="text-xs mx-3 pt-4" ref={ref}></div>
             </div>
             <button onClick={handleClick} className="bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-bold py-2  rounded cursor-pointer">login</button>
           </div>
-
-          {/* <div className={"flex flex-col gap-5 bg-gray-800 p-10 rounded-lg"}>
-            <h1 className="text-3xl font-bold text-center">
-            Fingerprint recognaizing
-            </h1>
-            <div className="flex justify-center items-center flex-col pt-10">
-            <Spinner variant="ring" />
-            
-            </div>
-            </div> */}
         </main>
       </div>
     </>
